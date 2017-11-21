@@ -1,0 +1,37 @@
+tar = obj/count.o obj/delect.o obj/desktop.o obj/find.o obj/insert.o obj/main.o obj/quit.o obj/revise.o obj/show.o
+out/students: $(tar)
+	gcc  -o out/students $(tar)
+
+obj/main.o: main.c datatype.h desktop.h find.h insert.h show.h quit.h revise.h
+	gcc -c main.c -o obj/main.o
+
+obj/count.o: count.c count.h datatype.h show.h
+	gcc -c count.c -o obj/count.o
+
+obj/delect.o: delect.c delect.h datatype.h
+	gcc -c delect.c -o obj/delect.o
+
+obj/desktop.o: desktop.c desktop.h datatype.h find.h
+	gcc -c desktop.c -o obj/desktop.o
+
+obj/find.o: find.c find.h datatype.h show.h
+	gcc -c find.c -o obj/find.o
+
+obj/insert.o: insert.c insert.h datatype.h
+	gcc -c insert.c -o obj/insert.o
+
+obj/quit.o: quit.c quit.h datatype.h
+	gcc -c quit.c -o obj/quit.o
+
+obj/show.o: show.c show.h datatype.h
+	gcc -c show.c -o obj/show.o
+
+obj/revise.o: revise.c revise.h show.h
+	gcc -c revise.c -o obj/revise.o
+
+
+test:
+	./out/students
+clean:
+	rm obj/*.o
+	rm out/students
